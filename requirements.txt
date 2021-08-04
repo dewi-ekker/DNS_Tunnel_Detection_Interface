@@ -1,5 +1,5 @@
 anyio==3.2.1
-argon2-cffi @ file:///C:/ci/argon2-cffi_1613037829118/work
+argon2-cffi
 async-generator==1.10
 atomicwrites==1.4.0
 attrs @ file:///tmp/build/80754af9/attrs_1620827162558/work
