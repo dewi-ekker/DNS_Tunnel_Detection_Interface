@@ -10,7 +10,7 @@ from pcap_feature_parser import *
 def update_datastore(path, label):
     old = pd.read_csv('DNS_datastore.csv', index_col=0)
 
-    if 'source_file' in old.columns and path in list(old['source_file']):
+    if 'Source Path' in old.columns and path in list(old['Source Path']):
         raise('Error: A file with this path already exists in the datastore.')
     else:
         pcap = read_pcap(path)
@@ -30,7 +30,7 @@ def erase_datastores(path):
     if path == 'ALL':
         pd.DataFrame().to_csv('DNS_datastore.csv')
     else:
-        sources = pd.read_csv('DNS_datastore.csv', usecols=['source path'], squeeze=True)
+        sources = pd.read_csv('DNS_datastore.csv', usecols=['Source Path'], squeeze=True)
         erase_rows = list(sources[sources == path].index)
         
         new = pd.read_csv('DNS_datastore.csv', index_col=0)
@@ -58,7 +58,7 @@ def train_rf(x, y, features):
     # build the model with the 'best' parameters as found in hypertuning with GridSearchCV
     rf = RandomForestClassifier(n_estimators=10,
                                 max_features=None,
-                                max_depth=4,
+                                max_depth=3,
                                 n_jobs=-1,
                                 random_state=None)
     # train the model and save to file
@@ -107,11 +107,11 @@ def plot_cm(rf, x, y):
     
 def get_metrics(cm):
     TN, FP, FN, TP =  [int(x) for x in np.asarray(cm).reshape(-1)]
-    recall = TP/(TN+FN)
+    recall = TP/(TP+FN)
     precision = TP/(TP+FP)
-    metrics = pd.DataFrame(columns=['other names','Equation','Value'])
-    metrics.loc['Accuracy',:] = ['', 'TN+TP/total', '%.2f%%' %((TN+TP)/(TN+TP+FN+FP)*100)]
-    metrics.loc['True Positive Rate',:] = ['Sensitivity, Recall', 'TP/(TN+FN)', '%.2f%%' %(recall*100)]
+    metrics = pd.DataFrame(columns=['Evaluation Metric (other names)','Equation','Value'])
+    metrics.loc['Accuracy',:] = ['', 'TN+TP / total', '%.2f%%' %((TN+TP)/(TN+TP+FN+FP)*100)]
+    metrics.loc['True Positive Rate',:] = ['Sensitivity, Recall', 'TP/(TP+FN)', '%.2f%%' %(recall*100)]
     metrics.loc['True Negative Rate',:] = ['Specificity', 'TN/(TN+FN)', '%.2f%%' %(TN/(TN+FN)*100)]
     metrics.loc['False Positive Rate',:] = ['Fall-Out', 'FP/(TN+FN)', '%.2f%%' %(FP/(TN+FN)*100)]
     metrics.loc['False Negative Rate',:] = ['Miss Rate', 'TN/(FN+TP)', '%.2f%%' %(FN/(FN+TP)*100)]
