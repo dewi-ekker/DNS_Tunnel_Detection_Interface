@@ -104,10 +104,10 @@ def parse_features(df, label):
         'Payload Numeric Count', 
         'Payload Special Char Count']] = [count(name) for name in df['Payload']]
 
-#     df['Dashes Count'] = [str(name).count('-') for name in df['Queryname']]
-#     df['Slashes Count'] = [str(name).count('/') for name in df['Queryname']]
-#     df['Periods Count'] = [str(name).count('.') for name in df['Queryname']]
-#     df['Equal Signs Count'] = [str(name).count('=') for name in df['Queryname']]
+    df['Dashes Count'] = [str(name).count('-') for name in df['Queryname']]
+    df['Slashes Count'] = [str(name).count('/') for name in df['Queryname']]
+    df['Periods Count'] = [str(name).count('.') for name in df['Queryname']]
+    df['Equal Signs Count'] = [str(name).count('=') for name in df['Queryname']]
 
     df['Packets in Session'] = df.groupby('Session')['Session'].transform('count')
     
