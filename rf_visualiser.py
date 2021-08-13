@@ -57,7 +57,9 @@ def train_rf(x, y, features):
     
     # build the model with the 'best' parameters as found in hypertuning with GridSearchCV
     rf = RandomForestClassifier(n_estimators=10,
-                                max_features=None,
+                                max_features=5,
+                                min_samples_leaf= 0.1,
+                                min_samples_split= 0.2,
                                 max_depth=3,
                                 n_jobs=-1,
                                 random_state=None)
@@ -81,6 +83,7 @@ def plot_fi(rf, features):
     importances.plot.bar(yerr='std', ax=ax, error_kw=dict(capsize=5, lw=0.5, capthick=0.5), color='lightskyblue', ecolor='navy')
     ax.set_title("Feature Importances")
     ax.set_ylabel("Mean decrease in impurity")
+    ax.get_legend().remove()
     fig.tight_layout()
     fig.savefig('Model_Metrics/Feature_Importances.png', dpi=300)
     plt.close()
@@ -156,7 +159,7 @@ def singletree(rf, features, packet, tree):
             'highlight': '#0080c9'
            }
     df = pd.read_csv('DNS_datastore.csv', index_col=0)
-    y = df['label']
+    y = df['Label']
     x = df[features].fillna(0)
 
     viz = dtreeviz(rf.estimators_[tree-1],

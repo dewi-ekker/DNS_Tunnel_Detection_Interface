@@ -64,7 +64,7 @@ def parse_features(df, label):
             prob * math.log(prob, 2)
             for prob in freqs))
 
-    df['Queryname Entropy'] = [shannon(name) for name in df['Queryname']]
+#     df['Queryname Entropy'] = [shannon(name) for name in df['Queryname']]
     df['Subdomain Entropy'] = [shannon(name) for name in df['Subdomain']]
     df['Payload Entropy'] = [shannon(name) for name in df['Payload']]
 
@@ -86,11 +86,11 @@ def parse_features(df, label):
                 special += 1
         return [total, uppercase, lowercase, numeric, special]
 
-    df[['Character Count', 
-        'Uppercase Count', 
-        'Lowercase Count', 
-        'Numeric Count', 
-        'Special Char Count']] = [count(name) for name in df['Queryname']]
+#     df[['Character Count', 
+#         'Uppercase Count', 
+#         'Lowercase Count', 
+#         'Numeric Count', 
+#         'Special Char Count']] = [count(name) for name in df['Queryname']]
     
     df[['Subdomain Character Count', 
         'Subdomain Uppercase Count', 
@@ -104,14 +104,14 @@ def parse_features(df, label):
         'Payload Numeric Count', 
         'Payload Special Char Count']] = [count(name) for name in df['Payload']]
 
-    df['Dashes Count'] = [str(name).count('-') for name in df['Queryname']]
-    df['Slashes Count'] = [str(name).count('/') for name in df['Queryname']]
-    df['Periods Count'] = [str(name).count('.') for name in df['Queryname']]
-    df['Equal Signs Count'] = [str(name).count('=') for name in df['Queryname']]
+#     df['Dashes Count'] = [str(name).count('-') for name in df['Queryname']]
+#     df['Slashes Count'] = [str(name).count('/') for name in df['Queryname']]
+#     df['Periods Count'] = [str(name).count('.') for name in df['Queryname']]
+#     df['Equal Signs Count'] = [str(name).count('=') for name in df['Queryname']]
 
     df['Packets in Session'] = df.groupby('Session')['Session'].transform('count')
     
-    df['Avg Queryname Length (Session)'] = df.groupby('Session')['Queryname'].transform(lambda x: np.mean(x.str.len()))
+#     df['Avg Queryname Length (Session)'] = df.groupby('Session')['Queryname'].transform(lambda x: np.mean(x.str.len()))
     df['Avg Subdomain Length (Session)'] = df.groupby('Session')['Subdomain'].transform(lambda x: np.mean(x.str.len()))
     df['Avg Payload Length (Session)'] = df.groupby('Session')['Payload'].transform(lambda x: np.mean(x.str.len()))
 
