@@ -13,7 +13,7 @@ colour==0.1.5
 contextvars==2.4
 cryptography
 cycler==0.10.0
-dataclasses
+dataclasses==0.8
 decorator
 defusedxml
 dtreeviz==1.3
@@ -45,7 +45,7 @@ MarkupSafe
 matplotlib
 mistune==0.8.4
 mkl-fft==1.3.0
-mkl-random
+mkl-random==1.1.1
 mkl-service==2.3.0
 mpmath==1.2.1
 nbclient
