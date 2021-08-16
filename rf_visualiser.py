@@ -149,6 +149,7 @@ def vizdtrees(rf, x, y, features):
                        histtype='bar', # default:'barstacked'
                        colors=colors)
     #save the trees
+        gv_file_path="DecisionTrees/"
         img = "DecisionTrees/dtreeviz_{:02d}.svg".format(i+1)
         viz.save(img)
 
