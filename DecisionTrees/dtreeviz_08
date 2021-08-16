@@ -12,25 +12,25 @@ digraph G {
     node2 [margin="0" shape=none label=<<table border="0">
             
             <tr>
-                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node2_2884.svg"/></td>
-            </tr>
-            </table>>]
-	node5 [margin="0" shape=none label=<<table border="0">
-            
-            <tr>
-                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node5_2884.svg"/></td>
+                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node2_2104.svg"/></td>
             </tr>
             </table>>]
 	node1 [margin="0" shape=none label=<<table border="0">
             
             <tr>
-                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node1_2884.svg"/></td>
+                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node1_2104.svg"/></td>
+            </tr>
+            </table>>]
+	node6 [margin="0" shape=none label=<<table border="0">
+            
+            <tr>
+                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node6_2104.svg"/></td>
             </tr>
             </table>>]
 	node0 [margin="0" shape=none label=<<table border="0">
             
             <tr>
-                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node0_2884.svg"/></td>
+                    <td><img src="C:\Users\dewie\AppData\Local\Temp/node0_2104.svg"/></td>
             </tr>
             </table>>]
     node2 -> leaf3 [penwidth=0.3 color="#444443" label=<>]
@@ -41,58 +41,58 @@ digraph G {
                 leaf3 -> leaf4 [style=invis]
             }
             
-	node5 -> leaf6 [penwidth=0.3 color="#444443" label=<>]
-	node5 -> leaf7 [penwidth=0.3 color="#444443" label=<>]
+	node1 -> node2 [penwidth=0.3 color="#444443" label=<>]
+	node1 -> leaf5 [penwidth=0.3 color="#444443" label=<>]
 	
             {
                 rank=same;
-                leaf6 -> leaf7 [style=invis]
+                node2 -> leaf5 [style=invis]
             }
             
-	node1 -> node2 [penwidth=0.3 color="#444443" label=<>]
-	node1 -> node5 [penwidth=0.3 color="#444443" label=<>]
+	node6 -> leaf7 [penwidth=0.3 color="#444443" label=<>]
+	node6 -> leaf8 [penwidth=0.3 color="#444443" label=<>]
 	
             {
                 rank=same;
-                node2 -> node5 [style=invis]
+                leaf7 -> leaf8 [style=invis]
             }
             
 	node0 -> node1 [penwidth=0.3 color="#444443" label=<&le;>]
-	node0 -> leaf8 [penwidth=0.3 color="#444443" label=<&gt;>]
+	node0 -> node6 [penwidth=0.3 color="#444443" label=<&gt;>]
 	
             {
                 rank=same;
-                node1 -> leaf8 [style=invis]
+                node1 -> node6 [style=invis]
             }
             
     leaf3 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0" CELLBORDER="0">
         
         <tr>
-                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf3_2884.svg"/></td>
+                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf3_2104.svg"/></td>
         </tr>
         </table>>]
 	leaf4 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0" CELLBORDER="0">
         
         <tr>
-                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf4_2884.svg"/></td>
+                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf4_2104.svg"/></td>
         </tr>
         </table>>]
-	leaf6 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0" CELLBORDER="0">
+	leaf5 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0" CELLBORDER="0">
         
         <tr>
-                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf6_2884.svg"/></td>
+                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf5_2104.svg"/></td>
         </tr>
         </table>>]
 	leaf7 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0" CELLBORDER="0">
         
         <tr>
-                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf7_2884.svg"/></td>
+                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf7_2104.svg"/></td>
         </tr>
         </table>>]
 	leaf8 [margin="0" shape=box penwidth="0" color="#444443" label=<<table border="0" CELLBORDER="0">
         
         <tr>
-                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf8_2884.svg"/></td>
+                <td><img src="C:\Users\dewie\AppData\Local\Temp/leaf8_2104.svg"/></td>
         </tr>
         </table>>]
 
@@ -103,7 +103,7 @@ digraph G {
                 
         <table border="0" cellspacing="0" cellpadding="0">
             <tr>
-                <td border="0" cellspacing="0" cellpadding="0"><img src="C:\Users\dewie\AppData\Local\Temp/legend_2884.svg"/></td>
+                <td border="0" cellspacing="0" cellpadding="0"><img src="C:\Users\dewie\AppData\Local\Temp/legend_2104.svg"/></td>
             </tr>
         </table>
         
