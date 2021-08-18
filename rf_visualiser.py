@@ -50,7 +50,7 @@ from joblib import dump
 def train_rf(x, y, features):
     # add some Gaussian noise for increased robustness
     mu = 0
-    sigma = 0.1 * x.mean()
+    sigma = 0.03 * x.mean()
     noise = np.random.normal(mu, sigma, x.shape)
 
     x = x + noise
