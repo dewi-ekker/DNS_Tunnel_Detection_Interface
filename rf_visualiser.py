@@ -93,20 +93,34 @@ def plot_fi(rf, features):
 # plotting confusion matrix and calculating evaluation metrics:
 
 from sklearn.metrics import confusion_matrix
+from sklearn.model_selection import RepeatedStratifiedKFold
 
 def plot_cm(rf, x, y):
-    y_predict = rf.predict(x)
-    cm = confusion_matrix(y, y_predict)
+    cms_list = []
+    kf = RepeatedStratifiedKFold(n_splits=10, n_repeats=10)
+    
+    for train_index, test_index in kf.split(x, y):
+
+        x_train, x_test = x[train_index], x[test_index]
+        y_train, y_test = y[train_index], y[test_index]
+
+        rf.fit(x_train, y_train)
+        cm = confusion_matrix(y_test, rf.predict(x_test))
+        cms_list.append(cm)
+    
+    mean_cm = np.mean(cms_list, axis=0)
+
     names = ['TN','FP','FN','TP']
-    counts = ['{0:0.0f}'.format(value) for value in cm.flatten()]
-    percents = ['{0:.2%}'.format(value) for value in cm.flatten()/np.sum(cm)]
+    counts = ['{0:0.0f}'.format(value) for value in mean_cm.flatten()]
+    percents = ['{0:.2%}'.format(value) for value in mean_cm.flatten()/np.sum(cm)]
     labels = [f'{v1}\n{v2}\n{v3}' for v1, v2, v3 in zip(names, counts, percents)]
     labels = np.asarray(labels).reshape(2,2)
-    plt.title('Confusion Matrix')
+    plt.title('Mean Confusion Matrix')
     fig = sb.heatmap(cm, annot=labels, fmt='', cmap='Blues', cbar=False).get_figure()
+    
     fig.savefig('Model_Metrics/Confusion_Matrix.png', dpi=300)
     plt.close()
-    get_metrics(cm)
+    get_metrics(mean_cm)
     
 def get_metrics(cm):
     TN, FP, FN, TP =  [int(x) for x in np.asarray(cm).reshape(-1)]
